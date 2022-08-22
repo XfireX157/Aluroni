@@ -1,5 +1,6 @@
 import React from "react"
 import * as C from './styled'
+import { CgSearch } from "react-icons/cg";
 
 interface IProps {
     type?: React.HTMLInputTypeAttribute
@@ -18,6 +19,7 @@ export default function Buscador  ({type ,wait, setWait, placeholder}: IProps) {
                 value={wait}
                 onChange={(e) => setWait(e.target.value)}
             />
+            <CgSearch size={20} color="#4C4D5E" />
         </C.Buscador>
     )
 }

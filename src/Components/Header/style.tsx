@@ -1,18 +1,20 @@
 import styled from "styled-components";
-import { IProps } from "./types/IProps";
 
 const Media = {
     Tablet: "@media(min-width: 768px)"
 }
 
-export const Header = styled.header<IProps>`
+export const Header = styled.header`
     max-width: 100%;
+    height: 100%;
+   
+`
 
+export const UlMobile = styled.ul`
     ${Media.Tablet}{
-        .navi{
-            display: none;
-        }
+        display: none;
     }
+   
 `
 
 export const UL = styled.ul`
@@ -51,5 +53,15 @@ export const Nav = styled.div`
 `
 
 export const Search = styled.section`
-    
+    max-width: 80%;
+    height: 100%;
+    margin: 0 auto;
+    margin-top: 30px;
+`
+
+export const Box = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 `

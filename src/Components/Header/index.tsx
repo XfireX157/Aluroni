@@ -3,10 +3,10 @@ import Buscador from '../Buscador'
 import ButtonBurguer from '../ButtonBurguer'
 import Filtered from '../Filtered'
 import { NavBar } from '../NavBar'
+import { Salary } from '../Salary'
 import * as C from './style'
-import { IProps } from './types/IProps'
 
-const Header: React.FC <IProps> = () => {
+const Header = () => {
 
     const [isOpen, setIsOpen] = useState(false)
     const [wait, setWait] = useState('')
@@ -15,26 +15,26 @@ const Header: React.FC <IProps> = () => {
         <>
         <C.Header>
             <C.BoxImg>
-               <img src='/Assets/img/logo.svg' alt='' />
-
-                <C.UL>
-                    <NavBar/>
-                </C.UL>
+                <div>
+                    <img src='/Assets/img/logo.svg' alt='' />
+                    <C.UL>
+                        <NavBar/>
+                    </C.UL>
+                </div>
 
                 <ButtonBurguer onClick={() => setIsOpen(!isOpen)} />
             
                 {isOpen ? (
-                    <ul className='navi'>
+                    <C.UlMobile>
                         <NavBar/>
-                    </ul>): (null)}
-              
+                    </C.UlMobile>): (null)}
             </C.BoxImg>
 
             <C.Nav>
                 <h1>A casa do código e da massa</h1>
             </C.Nav>
-
-            <section>
+        </C.Header>
+            <C.Search>
                 <h3>Buscador</h3>
                 <Buscador 
                     type="search"
@@ -42,10 +42,11 @@ const Header: React.FC <IProps> = () => {
                     wait={wait}
                     setWait={setWait}
                 />
-                <Filtered/>
-            </section>
-        </C.Header>
-       
+                <C.Box>
+                    <Filtered/>
+                    <Salary/>
+                </C.Box>
+            </C.Search>
         </>
     )
 }
