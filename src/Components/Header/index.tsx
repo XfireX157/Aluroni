@@ -2,6 +2,7 @@ import { useState } from 'react'
 import Buscador from '../Buscador'
 import ButtonBurguer from '../ButtonBurguer'
 import Filtered from '../Filtered'
+import Items from '../Items'
 import { NavBar } from '../NavBar'
 import { Salary } from '../Salary'
 import * as C from './style'
@@ -46,6 +47,7 @@ const Header = () => {
                     <Filtered/>
                     <Salary/>
                 </C.Box>
+                <Items/>
             </C.Search>
         </>
     )
