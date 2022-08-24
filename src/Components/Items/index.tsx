@@ -1,9 +1,29 @@
 import * as C from './style'
 import items from '../../Mock/Items.json'
+import { useState } from 'react'
 
-const Items = () => (
-    <C.Container>
-        {items.map(item => (
+interface IProps {
+    filtered: number | null
+    wait: string
+    salary: string
+}
+
+  
+
+const Items = (props: IProps) => {
+
+    const [list, setList] = useState('')
+    const {wait, filtered} = props
+
+    const Search = () => {
+        if(!wait) return []
+        return items.filter(item => item.title.toLowerCase())
+    }
+
+    return(    
+
+        <C.Container>
+        {Search().map(item => (
             <C.item key={item.id}>
                 <C.ItemImg>
                     <img src={item.photo} alt={item.title} />
@@ -23,6 +43,7 @@ const Items = () => (
             </C.item>
         ))}
     </C.Container>
-)
+    )
+} 
 
 export default Items

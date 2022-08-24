@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import Buscador from '../Buscador'
+import Buscador from '../Search'
 import ButtonBurguer from '../ButtonBurguer'
 import Filtered from '../Filtered'
 import Items from '../Items'
@@ -11,7 +11,9 @@ const Header = () => {
 
     const [isOpen, setIsOpen] = useState(false)
     const [wait, setWait] = useState('')
-
+    const [filtered, setFiltered] = useState<number | null>(null)
+    const [salary, setSalary] = useState('')
+    
     return (
         <>
         <C.Header>
@@ -44,10 +46,10 @@ const Header = () => {
                     setWait={setWait}
                 />
                 <C.Box>
-                    <Filtered/>
-                    <Salary/>
+                    <Filtered filtered={filtered} setFiltered={setFiltered} />
+                    <Salary salary={salary} setSalary={setSalary} />
                 </C.Box>
-                <Items/>
+                <Items filtered={filtered} salary={salary} wait={wait} />
             </C.Search>
         </>
     )

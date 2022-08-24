@@ -3,11 +3,15 @@ import Salarys from '../../Mock/Salarys.json'
 import {IoMdArrowDropdown, IoMdArrowDropup} from 'react-icons/io'
 import * as C from './style'
 
+interface IProps {
+    salary: string
+    setSalary: React.Dispatch<React.SetStateAction<string>>
+}
 
-export const Salary = () => {
+export const Salary = ({salary, setSalary} : IProps) => {
 
     const [isOpen, setIsOpen] = useState(false)
-    const [salary, setSalary] = useState('')
+   
     const nameSalary = salary && Salarys.find(item => item.value === salary)?.nome
 
     return (

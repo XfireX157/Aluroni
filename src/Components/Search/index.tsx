@@ -10,7 +10,7 @@ interface IProps {
 }
 
 export default function Buscador  ({type ,wait, setWait, placeholder}: IProps) {
-
+    
     return(
         <C.Buscador>
             <C.Input 

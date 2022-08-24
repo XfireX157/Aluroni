@@ -4,9 +4,13 @@ import * as C from './styled'
 
 type IOpcao = typeof filter[0]
 
-export default function Filtered(){
-    const [filtered, setFiltered] = useState<number | null>()
-    
+interface IProps {
+    filtered: number | null
+    setFiltered: React.Dispatch<React.SetStateAction<number | null>>
+}
+
+export default function Filtered({filtered, setFiltered} : IProps){
+   
     function selectFilter(item: IOpcao) {
        if(filtered !== item.id){
             setFiltered(item.id) 
