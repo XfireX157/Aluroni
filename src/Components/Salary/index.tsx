@@ -11,7 +11,6 @@ interface IProps {
 export const Salary = ({salary, setSalary} : IProps) => {
 
     const [isOpen, setIsOpen] = useState(false)
-   
     const nameSalary = salary && Salarys.find(item => item.value === salary)?.nome
 
     return (

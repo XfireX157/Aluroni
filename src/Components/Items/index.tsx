@@ -1,6 +1,6 @@
 import * as C from './style'
 import items from '../../Mock/Items.json'
-import { useState } from 'react'
+import { useEffect, useState } from 'react' 
 
 interface IProps {
     filtered: number | null
@@ -8,22 +8,43 @@ interface IProps {
     salary: string
 }
 
-  
-
 const Items = (props: IProps) => {
 
-    const [list, setList] = useState('')
-    const {wait, filtered} = props
+    const [list, setList] = useState(items)
+    const {wait, filtered, salary} = props
 
-    const Search = () => {
-        if(!wait) return []
-        return items.filter(item => item.title.toLowerCase())
+    function testeBusca(title: string) {
+        const regex = new RegExp(wait)
+        return regex.test(title)
     }
 
+    function ordenar(newList: typeof items) {
+        switch(salary) {
+            case 'porcao':
+                return newList.sort((a, b) =>  a.size > b.size ? 1 : -1)
+            case 'qtd_pessoas':
+                return newList.sort((a, b) => a.serving > b.serving ? 1 : -1)
+            case 'preco':
+                return newList.sort((a, b) => a.price > b.price ? 1 : -1)
+            default:
+               return newList
+        }
+    }
+
+    function testaFilter(id: number){
+        if(filtered !== null) return filtered === id 
+        return true
+    }
+
+    useEffect(() => {
+        const newList = items.filter(item => testeBusca(item.title) && testaFilter(item.category.id))
+        setList(ordenar(newList))
+    }, [wait, filtered, salary])
+ 
     return(    
 
         <C.Container>
-        {Search().map(item => (
+        {list.map(item => (
             <C.item key={item.id}>
                 <C.ItemImg>
                     <img src={item.photo} alt={item.title} />

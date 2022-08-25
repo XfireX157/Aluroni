@@ -11,9 +11,8 @@ const Header = () => {
 
     const [isOpen, setIsOpen] = useState(false)
     const [wait, setWait] = useState('')
-    const [filtered, setFiltered] = useState<number | null>(null)
+    const [filtered, setFiltered] = useState<number | null>(null) 
     const [salary, setSalary] = useState('')
-    
     return (
         <>
         <C.Header>
@@ -49,7 +48,7 @@ const Header = () => {
                     <Filtered filtered={filtered} setFiltered={setFiltered} />
                     <Salary salary={salary} setSalary={setSalary} />
                 </C.Box>
-                <Items filtered={filtered} salary={salary} wait={wait} />
+                <Items filtered={filtered} wait={wait} salary={salary}  />
             </C.Search>
         </>
     )
